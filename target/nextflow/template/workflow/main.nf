@@ -2779,7 +2779,7 @@ meta = [
         "alternatives" : [
           "-i"
         ],
-        "description" : "Input TSV file",
+        "description" : "Input fastq directory.",
         "example" : [
           "file1.tar.gz"
         ],
@@ -2792,13 +2792,11 @@ meta = [
         "dest" : "par"
       },
       {
-        "type" : "integer",
-        "name" : "--column",
-        "description" : "The column index to extract from the TSV input file",
-        "default" : [
-          2
-        ],
-        "required" : false,
+        "type" : "file",
+        "name" : "--hostDB",
+        "must_exist" : true,
+        "create_parent" : true,
+        "required" : true,
         "direction" : "input",
         "multiple" : false,
         "multiple_sep" : ":",
@@ -2809,10 +2807,6 @@ meta = [
         "name" : "--output",
         "alternatives" : [
           "-o"
-        ],
-        "description" : "Output TSV file",
-        "example" : [
-          "output.tsv"
         ],
         "must_exist" : true,
         "create_parent" : true,
@@ -2828,75 +2822,54 @@ meta = [
         "type" : "nextflow_script",
         "path" : "main.nf",
         "is_executable" : true,
-        "parent" : "file:/Users/toni/code/projects/viash/viash_project_template/src/template/workflow/",
+        "parent" : "file:/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/workflow/",
         "entrypoint" : "run_wf"
       }
     ],
-    "description" : "An example pipeline and project template.\n\nMultiple TSV files can be input, each with a 'column' identifier that\nshould be extracted. All extracted columns are then collated again.\n",
+    "description" : "An example pipeline and project template.\n\nFastq quality check of raw microbiome reads, next host reads decontamination - kneaddata.\n",
     "status" : "enabled",
     "dependencies" : [
       {
-        "name" : "template/combine_columns",
+        "name" : "template/fastqc",
         "repository" : {
           "type" : "local",
           "localPath" : ""
         },
-        "foundConfigPath" : "/Users/toni/code/projects/viash/viash_project_template/src/template/combine_columns/config.vsh.yaml",
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
         "configInfo" : {
-          "functionalityName" : "combine_columns",
-          "git_tag" : "v0.2.2",
-          "git_remote" : "https://github.com/viash-io/viash_project_template",
+          "functionalityName" : "fastqc",
+          "git_tag" : "",
+          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
           "viash_version" : "0.8.4",
-          "config" : "/Users/toni/code/projects/viash/viash_project_template/src/template/combine_columns/config.vsh.yaml",
+          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
           "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "82b49c3c35b4fd813b4c585e921a5b0885b25cc3",
-          "executable" : "/nextflow/template/combine_columns/main.nf"
+          "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
+          "executable" : "/nextflow/template/fastqc/main.nf"
         },
-        "writtenPath" : "/Users/toni/code/projects/viash/viash_project_template/target/nextflow/template/combine_columns"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/fastqc"
       },
       {
-        "name" : "template/remove_comments",
+        "name" : "kneaddata",
         "repository" : {
           "type" : "local",
           "localPath" : ""
         },
-        "foundConfigPath" : "/Users/toni/code/projects/viash/viash_project_template/src/template/remove_comments/config.vsh.yaml",
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
         "configInfo" : {
-          "functionalityName" : "remove_comments",
-          "git_tag" : "v0.2.2",
-          "git_remote" : "https://github.com/viash-io/viash_project_template",
+          "functionalityName" : "kneaddata",
+          "git_tag" : "",
+          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
           "viash_version" : "0.8.4",
-          "config" : "/Users/toni/code/projects/viash/viash_project_template/src/template/remove_comments/config.vsh.yaml",
-          "functionalityNamespace" : "template",
+          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
+          "functionalityNamespace" : "",
           "output" : "",
           "platform" : "",
-          "git_commit" : "82b49c3c35b4fd813b4c585e921a5b0885b25cc3",
-          "executable" : "/nextflow/template/remove_comments/main.nf"
+          "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
+          "executable" : "/nextflow/kneaddata/main.nf"
         },
-        "writtenPath" : "/Users/toni/code/projects/viash/viash_project_template/target/nextflow/template/remove_comments"
-      },
-      {
-        "name" : "template/take_column",
-        "repository" : {
-          "type" : "local",
-          "localPath" : ""
-        },
-        "foundConfigPath" : "/Users/toni/code/projects/viash/viash_project_template/src/template/take_column/config.vsh.yaml",
-        "configInfo" : {
-          "functionalityName" : "take_column",
-          "git_tag" : "v0.2.2",
-          "git_remote" : "https://github.com/viash-io/viash_project_template",
-          "viash_version" : "0.8.4",
-          "config" : "/Users/toni/code/projects/viash/viash_project_template/src/template/take_column/config.vsh.yaml",
-          "functionalityNamespace" : "template",
-          "output" : "",
-          "platform" : "",
-          "git_commit" : "82b49c3c35b4fd813b4c585e921a5b0885b25cc3",
-          "executable" : "/nextflow/template/take_column/main.nf"
-        },
-        "writtenPath" : "/Users/toni/code/projects/viash/viash_project_template/target/nextflow/template/take_column"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/kneaddata"
       },
       {
         "name" : "join/vsh_toList",
@@ -2905,9 +2878,9 @@ meta = [
           "name" : "",
           "repo" : "data-intuitive/vsh-pipeline-operators",
           "tag" : "v0.2.0",
-          "localPath" : "/tmp/viash_hub_repo10403976298602743003"
+          "localPath" : "/tmp/viash_hub_repo11260304007778514033"
         },
-        "foundConfigPath" : "/tmp/viash_hub_repo10403976298602743003/target/nextflow/join/vsh_toList/.config.vsh.yaml",
+        "foundConfigPath" : "/tmp/viash_hub_repo11260304007778514033/target/nextflow/join/vsh_toList/.config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "vsh_toList",
           "git_remote" : "git@viash-hub.com:data-intuitive/vsh-pipeline-operators.git",
@@ -2919,7 +2892,7 @@ meta = [
           "git_commit" : "05a5bfa4eaa2c04ba473671e4d30c6c18aceec6e",
           "executable" : "/Users/toni/code/projects/viash-hub/vsh-pipeline-operators/target/nextflow/join/vsh_toList/main.nf"
         },
-        "writtenPath" : "/Users/toni/code/projects/viash/viash_project_template/target/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList"
       }
     ],
     "repositories" : [
@@ -2990,22 +2963,20 @@ meta = [
     }
   ],
   "info" : {
-    "config" : "/Users/toni/code/projects/viash/viash_project_template/src/template/workflow/config.vsh.yaml",
+    "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/workflow/config.vsh.yaml",
     "platform" : "nextflow",
-    "output" : "/Users/toni/code/projects/viash/viash_project_template/target/nextflow/template/workflow",
+    "output" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/workflow",
     "viash_version" : "0.8.4",
-    "git_commit" : "82b49c3c35b4fd813b4c585e921a5b0885b25cc3",
-    "git_remote" : "https://github.com/viash-io/viash_project_template",
-    "git_tag" : "v0.2.2"
+    "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
+    "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git"
   }
 }'''))
 ]
 
 // resolve dependencies dependencies (if any)
 meta["root_dir"] = getRootDir()
-include { combine_columns } from "${meta.resources_dir}/../../../nextflow/template/combine_columns/main.nf"
-include { remove_comments } from "${meta.resources_dir}/../../../nextflow/template/remove_comments/main.nf"
-include { take_column } from "${meta.resources_dir}/../../../nextflow/template/take_column/main.nf"
+include { fastqc } from "${meta.resources_dir}/../../../nextflow/template/fastqc/main.nf"
+include { kneaddata } from "${meta.resources_dir}/../../../nextflow/kneaddata/main.nf"
 include { vsh_toList } from "${meta.root_dir}/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList/main.nf"
 
 // inner workflow
@@ -3021,41 +2992,19 @@ workflow run_wf {
       input_ch
 
         // Remove comments from each TSV input file
-        | remove_comments.run(
+        | fastqc.run(
             fromState: [ input: "input" ],
             toState: { id, result, state -> state + result }
           )
 
         // Extract a single column from each TSV
         // The column to extract is specified in the sample sheet
-        | take_column.run(
+        | kneaddata.run(
             fromState:
               [
-                input: "output",
-                column: "column"
+                input: "input",
+                hostDB: "hostDB"
               ],
-            toState: { id, result, state -> result }
-          )
-
-        // Helper module with extra functionality around
-        // nextflow's `toSortedList` operator to reformat 
-        // its output list into a channel item that can be used
-        // directly with downstream components.
-        | vsh_toList.run(
-            fromState: { id, state ->
-              [
-                id: id,
-                input: state.output
-              ]
-            },
-            toState: [ output: "output" ]
-          )
-
-        // Concatenate TSVs into one
-        // and prep the output state.
-        | combine_columns.run(
-            auto: [ publish: true ],
-            fromState: [ input: "output" ],
             toState: { id, result, state -> result }
           )
 

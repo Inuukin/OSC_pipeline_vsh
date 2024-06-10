@@ -4,28 +4,23 @@ functionality:
   description: |
     An example pipeline and project template.
 
-    Multiple TSV files can be input, each with a 'column' identifier that
-    should be extracted. All extracted columns are then collated again.
+    Fastq quality check of raw microbiome reads, next host reads decontamination - kneaddata.
 
   arguments:
     - name: "--input"
       alternatives: [ "-i" ]
       type: file
       required: true
-      description: Input TSV file
+      description: Input fastq directory.
       example: file1.tar.gz 
-    - name: "--column"
-      type: integer
-      required: false
-      default: 2
-      description: The column index to extract from the TSV input file
+    - name: "--hostDB"
+      type: file
+      required: true
     - name: "--output"
       alternatives: [ "-o" ]
       type: file
       direction: output
       required: true
-      description: Output TSV file
-      example: output.tsv
 
   resources:
     - type: nextflow_script
@@ -33,12 +28,10 @@ functionality:
       entrypoint: run_wf
 
   dependencies: 
-    - name: template/combine_columns
-      repository: local
-    - name: template/remove_comments
-      repository: local
-    - name: template/take_column
-      repository: local
+    - name:  template/fastqc
+      repository: local     
+    - name:  kneaddata
+      repository: local      
     - name: join/vsh_toList
       repository: vsh-pipeline-operators
 

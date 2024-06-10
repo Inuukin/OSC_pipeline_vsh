@@ -1,0 +1,11 @@
+PASS	Basic Statistics	sample2_R1.fastq.gz
+PASS	Per base sequence quality	sample2_R1.fastq.gz
+PASS	Per tile sequence quality	sample2_R1.fastq.gz
+PASS	Per sequence quality scores	sample2_R1.fastq.gz
+WARN	Per base sequence content	sample2_R1.fastq.gz
+FAIL	Per sequence GC content	sample2_R1.fastq.gz
+WARN	Per base N content	sample2_R1.fastq.gz
+PASS	Sequence Length Distribution	sample2_R1.fastq.gz
+PASS	Sequence Duplication Levels	sample2_R1.fastq.gz
+FAIL	Overrepresented sequences	sample2_R1.fastq.gz
+PASS	Adapter Content	sample2_R1.fastq.gz
