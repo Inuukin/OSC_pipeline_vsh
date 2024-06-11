@@ -55,6 +55,10 @@ if [[ $len_R1 -eq $len_R2 ]]; then
     done
 fi
 
+cd "$par_output"
+mkdir additional_files/
+mv *bowtieOLD2out.txt *log *trimmed* *paired_contam* *unmatched* *paired* additional_files/
+
 
 
 
