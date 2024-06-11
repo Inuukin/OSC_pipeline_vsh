@@ -4,7 +4,7 @@ functionality:
   description: |
     An example pipeline and project template.
 
-    Fastq quality check of raw microbiome reads, next host reads decontamination - kneaddata.
+    Fastq quality check of raw microbiome reads, next host reads decontamination - kneaddata, and metaphlan taxonomic profiling.
 
   arguments:
     - name: "--input"
@@ -14,6 +14,9 @@ functionality:
       description: Input fastq directory.
       example: file1.tar.gz 
     - name: "--hostDB"
+      type: file
+      required: true
+    - name: "--bowtieDB"
       type: file
       required: true
     - name: "--output"
@@ -30,10 +33,13 @@ functionality:
   dependencies: 
     - name:  template/fastqc
       repository: local     
-    - name:  kneaddata
-      repository: local      
+    - name:  template/kneaddata
+      repository: local  
+    - name: template/metaphlan
+      repository: local    
     - name: join/vsh_toList
       repository: vsh-pipeline-operators
+
 
   repositories:
     - name: local

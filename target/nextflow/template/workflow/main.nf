@@ -2804,6 +2804,17 @@ meta = [
       },
       {
         "type" : "file",
+        "name" : "--bowtieDB",
+        "must_exist" : true,
+        "create_parent" : true,
+        "required" : true,
+        "direction" : "input",
+        "multiple" : false,
+        "multiple_sep" : ":",
+        "dest" : "par"
+      },
+      {
+        "type" : "file",
         "name" : "--output",
         "alternatives" : [
           "-o"
@@ -2826,7 +2837,7 @@ meta = [
         "entrypoint" : "run_wf"
       }
     ],
-    "description" : "An example pipeline and project template.\n\nFastq quality check of raw microbiome reads, next host reads decontamination - kneaddata.\n",
+    "description" : "An example pipeline and project template.\n\nFastq quality check of raw microbiome reads, next host reads decontamination - kneaddata, and metaphlan taxonomic profiling.\n",
     "status" : "enabled",
     "dependencies" : [
       {
@@ -2845,13 +2856,13 @@ meta = [
           "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
+          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
           "executable" : "/nextflow/template/fastqc/main.nf"
         },
         "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/fastqc"
       },
       {
-        "name" : "kneaddata",
+        "name" : "template/kneaddata",
         "repository" : {
           "type" : "local",
           "localPath" : ""
@@ -2863,13 +2874,34 @@ meta = [
           "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
           "viash_version" : "0.8.4",
           "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
-          "functionalityNamespace" : "",
+          "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
-          "executable" : "/nextflow/kneaddata/main.nf"
+          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
+          "executable" : "/nextflow/template/kneaddata/main.nf"
         },
-        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/kneaddata"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/kneaddata"
+      },
+      {
+        "name" : "template/metaphlan",
+        "repository" : {
+          "type" : "local",
+          "localPath" : ""
+        },
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
+        "configInfo" : {
+          "functionalityName" : "metaphlan",
+          "git_tag" : "",
+          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
+          "viash_version" : "0.8.4",
+          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
+          "functionalityNamespace" : "template",
+          "output" : "",
+          "platform" : "",
+          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
+          "executable" : "/nextflow/template/metaphlan/main.nf"
+        },
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/metaphlan"
       },
       {
         "name" : "join/vsh_toList",
@@ -2878,9 +2910,9 @@ meta = [
           "name" : "",
           "repo" : "data-intuitive/vsh-pipeline-operators",
           "tag" : "v0.2.0",
-          "localPath" : "/tmp/viash_hub_repo11260304007778514033"
+          "localPath" : "/tmp/viash_hub_repo11673050420200224520"
         },
-        "foundConfigPath" : "/tmp/viash_hub_repo11260304007778514033/target/nextflow/join/vsh_toList/.config.vsh.yaml",
+        "foundConfigPath" : "/tmp/viash_hub_repo11673050420200224520/target/nextflow/join/vsh_toList/.config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "vsh_toList",
           "git_remote" : "git@viash-hub.com:data-intuitive/vsh-pipeline-operators.git",
@@ -2967,7 +2999,7 @@ meta = [
     "platform" : "nextflow",
     "output" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/workflow",
     "viash_version" : "0.8.4",
-    "git_commit" : "0a6bb661a93bbafdb5390886e9a63547621b3f08",
+    "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
     "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git"
   }
 }'''))
@@ -2976,7 +3008,8 @@ meta = [
 // resolve dependencies dependencies (if any)
 meta["root_dir"] = getRootDir()
 include { fastqc } from "${meta.resources_dir}/../../../nextflow/template/fastqc/main.nf"
-include { kneaddata } from "${meta.resources_dir}/../../../nextflow/kneaddata/main.nf"
+include { kneaddata } from "${meta.resources_dir}/../../../nextflow/template/kneaddata/main.nf"
+include { metaphlan } from "${meta.resources_dir}/../../../nextflow/template/metaphlan/main.nf"
 include { vsh_toList } from "${meta.root_dir}/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList/main.nf"
 
 // inner workflow
@@ -2991,19 +3024,28 @@ workflow run_wf {
 
       input_ch
 
-        // Remove comments from each TSV input file
+        // Fastq quality check
         | fastqc.run(
             fromState: [ input: "input" ],
             toState: { id, result, state -> state + result }
           )
 
-        // Extract a single column from each TSV
-        // The column to extract is specified in the sample sheet
+        // Kneaddata host reads removal
         | kneaddata.run(
             fromState:
               [
                 input: "input",
                 hostDB: "hostDB"
+              ],
+            toState: { id, result, state -> state + result }
+          )
+          
+        // Metaphlan taxonomic profiling
+        | metaphlan.run(
+            fromState:
+              [
+                input: "output",
+                bowtieDB: "bowtieDB"
               ],
             toState: { id, result, state -> result }
           )

@@ -8,19 +8,28 @@ workflow run_wf {
 
       input_ch
 
-        // Remove comments from each TSV input file
+        // Fastq quality check
         | fastqc.run(
             fromState: [ input: "input" ],
             toState: { id, result, state -> state + result }
           )
 
-        // Extract a single column from each TSV
-        // The column to extract is specified in the sample sheet
+        // Kneaddata host reads removal
         | kneaddata.run(
             fromState:
               [
                 input: "input",
                 hostDB: "hostDB"
+              ],
+            toState: { id, result, state -> state + result }
+          )
+          
+        // Metaphlan taxonomic profiling
+        | metaphlan.run(
+            fromState:
+              [
+                input: "output",
+                bowtieDB: "bowtieDB"
               ],
             toState: { id, result, state -> result }
           )
