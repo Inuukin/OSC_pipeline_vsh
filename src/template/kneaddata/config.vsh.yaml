@@ -1,6 +1,6 @@
 functionality:
   name: kneaddata
-  description: KneadData tool.
+  namespace: template
   arguments:
     - type: file
       name: "--input"

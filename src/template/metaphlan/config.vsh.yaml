@@ -1,0 +1,32 @@
+functionality:
+  name: metaphlan
+  namespace: template
+  arguments:
+    - name: "--input"
+      alternatives: [ "-i" ]
+      type: file
+      required: true
+      example: "file.fastq.gz"   
+#    - name: "--index_bowtie"
+#      type: file
+#      required: true
+#      example: "mpa_vJan21_CHOCOPhlAnSGB_202103"
+    - name: "--bowtieDB"
+      type: file
+      required: true
+      example: "/references/if_pan_references/ChocoPhlAn_202103"
+    - name: "--output"
+      alternatives: [ "-o" ]
+      type: file
+      required: true
+      direction: output
+      example: "fastqc_output_dir/"
+  resources:
+    - type: bash_script
+      path: script.sh
+platforms:
+  - type: docker
+    image: registry.ardigen.com/if-pan/dockers/metaphlan:latest
+  - type: nextflow
+  - type: native
+
