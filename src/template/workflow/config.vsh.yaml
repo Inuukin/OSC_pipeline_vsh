@@ -1,0 +1,47 @@
+functionality:
+  name: workflow
+  namespace: template
+  description: |
+    An example pipeline and project template.
+
+    Fastq quality check of raw microbiome reads, next host reads decontamination - kneaddata.
+
+  arguments:
+    - name: "--input"
+      alternatives: [ "-i" ]
+      type: file
+      required: true
+      description: Input fastq directory.
+      example: file1.tar.gz 
+    - name: "--hostDB"
+      type: file
+      required: true
+    - name: "--output"
+      alternatives: [ "-o" ]
+      type: file
+      direction: output
+      required: true
+
+  resources:
+    - type: nextflow_script
+      path: main.nf
+      entrypoint: run_wf
+
+  dependencies: 
+    - name:  template/fastqc
+      repository: local     
+    - name:  kneaddata
+      repository: local      
+    - name: join/vsh_toList
+      repository: vsh-pipeline-operators
+
+  repositories:
+    - name: local
+      type: local
+    - name: vsh-pipeline-operators
+      type: vsh
+      repo: data-intuitive/vsh-pipeline-operators
+      tag: v0.2.0
+
+platforms:
+  - type: nextflow

@@ -1,0 +1,23 @@
+functionality:
+  name: kneaddata
+  namespace: template
+  arguments:
+    - type: file
+      name: "--input"
+      required: true
+    - type: file
+      name: "--hostDB"
+      required: true
+    - type: file
+      name: "--output"
+      direction: output
+      required: true
+  resources:
+    - type: bash_script
+      path: script.sh
+      
+platforms:
+  - type: docker
+    image: registry.ardigen.com/marta.fogt/osc_pipeline_vsh/kneaddata:1.0
+  - type: native
+  - type: nextflow
