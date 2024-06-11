@@ -56,11 +56,14 @@ if [[ $len_R1 -eq $len_R2 ]]; then
 fi
 
 cd "$par_output"
+
 mkdir additional_files/
-mv *bowtieOLD2out.txt *log *trimmed* *paired_contam* *unmatched* *paired* additional_files/
 
+for file in *{bowtie2out,trimmed,paired,unmatched}* ; do
 
+    [ -e "$file" ] && mv "$file" additional_files/
 
+done
 
 
 

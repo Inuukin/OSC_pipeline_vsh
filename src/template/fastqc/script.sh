@@ -9,6 +9,6 @@ par_output=path/to/output/
 
 mkdir -p "$par_output"
 
-fastqc "$par_input" -o "$par_output"
+fastqc "$par_input"/*{fastq,fq}.gz -o "$par_output"
 
 

@@ -2833,7 +2833,7 @@ meta = [
         "type" : "nextflow_script",
         "path" : "main.nf",
         "is_executable" : true,
-        "parent" : "file:/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/workflow/",
+        "parent" : "file:/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/workflow/",
         "entrypoint" : "run_wf"
       }
     ],
@@ -2846,20 +2846,20 @@ meta = [
           "type" : "local",
           "localPath" : ""
         },
-        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "fastqc",
           "git_tag" : "",
-          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
+          "git_remote" : "https://gitlab.ardigen.com/marta.fogt/osc_pipeline_vsh.git",
           "viash_version" : "0.8.4",
-          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
+          "config" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/fastqc/config.vsh.yaml",
           "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
+          "git_commit" : "88537cd545e1916e9d820e9d376e905bd412b980",
           "executable" : "/nextflow/template/fastqc/main.nf"
         },
-        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/fastqc"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/target/nextflow/template/fastqc"
       },
       {
         "name" : "template/kneaddata",
@@ -2867,20 +2867,20 @@ meta = [
           "type" : "local",
           "localPath" : ""
         },
-        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "kneaddata",
           "git_tag" : "",
-          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
+          "git_remote" : "https://gitlab.ardigen.com/marta.fogt/osc_pipeline_vsh.git",
           "viash_version" : "0.8.4",
-          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
+          "config" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/kneaddata/config.vsh.yaml",
           "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
+          "git_commit" : "88537cd545e1916e9d820e9d376e905bd412b980",
           "executable" : "/nextflow/template/kneaddata/main.nf"
         },
-        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/kneaddata"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/target/nextflow/template/kneaddata"
       },
       {
         "name" : "template/metaphlan",
@@ -2888,20 +2888,20 @@ meta = [
           "type" : "local",
           "localPath" : ""
         },
-        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
+        "foundConfigPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "metaphlan",
           "git_tag" : "",
-          "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git",
+          "git_remote" : "https://gitlab.ardigen.com/marta.fogt/osc_pipeline_vsh.git",
           "viash_version" : "0.8.4",
-          "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
+          "config" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/metaphlan/config.vsh.yaml",
           "functionalityNamespace" : "template",
           "output" : "",
           "platform" : "",
-          "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
+          "git_commit" : "88537cd545e1916e9d820e9d376e905bd412b980",
           "executable" : "/nextflow/template/metaphlan/main.nf"
         },
-        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/metaphlan"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/target/nextflow/template/metaphlan"
       },
       {
         "name" : "join/vsh_toList",
@@ -2910,9 +2910,9 @@ meta = [
           "name" : "",
           "repo" : "data-intuitive/vsh-pipeline-operators",
           "tag" : "v0.2.0",
-          "localPath" : "/tmp/viash_hub_repo11673050420200224520"
+          "localPath" : "/tmp/viash_hub_repo13445991552637630420"
         },
-        "foundConfigPath" : "/tmp/viash_hub_repo11673050420200224520/target/nextflow/join/vsh_toList/.config.vsh.yaml",
+        "foundConfigPath" : "/tmp/viash_hub_repo13445991552637630420/target/nextflow/join/vsh_toList/.config.vsh.yaml",
         "configInfo" : {
           "functionalityName" : "vsh_toList",
           "git_remote" : "git@viash-hub.com:data-intuitive/vsh-pipeline-operators.git",
@@ -2924,7 +2924,7 @@ meta = [
           "git_commit" : "05a5bfa4eaa2c04ba473671e4d30c6c18aceec6e",
           "executable" : "/Users/toni/code/projects/viash-hub/vsh-pipeline-operators/target/nextflow/join/vsh_toList/main.nf"
         },
-        "writtenPath" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList"
+        "writtenPath" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/target/dependencies/vsh/data-intuitive/vsh-pipeline-operators/v0.2.0/nextflow/join/vsh_toList"
       }
     ],
     "repositories" : [
@@ -2995,12 +2995,12 @@ meta = [
     }
   ],
   "info" : {
-    "config" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/src/template/workflow/config.vsh.yaml",
+    "config" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/src/template/workflow/config.vsh.yaml",
     "platform" : "nextflow",
-    "output" : "/home/marta_fogt/custom_pipeline/OSC_pipeline_vsh/target/nextflow/template/workflow",
+    "output" : "/home/marta_fogt/custom_pipeline/osc_pipeline_vsh/target/nextflow/template/workflow",
     "viash_version" : "0.8.4",
-    "git_commit" : "b685a2a0d637c278733b9abeafd85648bf73b3a0",
-    "git_remote" : "https://github.com/Inuukin/OSC_pipeline_vsh.git"
+    "git_commit" : "88537cd545e1916e9d820e9d376e905bd412b980",
+    "git_remote" : "https://gitlab.ardigen.com/marta.fogt/osc_pipeline_vsh.git"
   }
 }'''))
 ]
