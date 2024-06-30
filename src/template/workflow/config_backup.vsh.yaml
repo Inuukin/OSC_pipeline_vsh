@@ -32,9 +32,9 @@ functionality:
 
   dependencies: 
     - name:  template/fastqc
-      repository: local
+      repository: local     
     - name:  template/kneaddata
-      repository: local
+      repository: local  
     - name: template/metaphlan
       repository: local
 
@@ -42,7 +42,10 @@ functionality:
   repositories:
     - name: local
       type: local
-
+    - name: vsh-pipeline-operators
+      type: vsh
+      repo: data-intuitive/vsh-pipeline-operators
+      tag: v0.2.0
 
 platforms:
   - type: nextflow
